@@ -11,7 +11,7 @@ public class EnemyState : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public Vector3 walkPoint;
-    bool walkPointSet;
+    bool _walkPointSet;
     public float walkPointRange;
     public float timeBetweenAttacks;
     public float sightRange, attackRange;
@@ -36,13 +36,13 @@ public class EnemyState : MonoBehaviour
 
     private void Patroling()
     {
-        if (!walkPointSet) SearchWalkPoint();
+        if (!_walkPointSet) SearchWalkPoint();
 
-        if (walkPointSet)
+        if (_walkPointSet)
             agent.SetDestination(walkPoint);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
         if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
+            _walkPointSet = false;
     }
 
     private void SearchWalkPoint()
@@ -54,7 +54,7 @@ public class EnemyState : MonoBehaviour
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-            walkPointSet = true;
+            _walkPointSet = true;
     }
 
     private void ChasePlayer()

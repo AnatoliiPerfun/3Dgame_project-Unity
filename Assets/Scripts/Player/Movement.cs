@@ -29,7 +29,6 @@ public class Movement : MonoBehaviour
 
     private void Awake()
     {
-
         controls = new Controls();
     }
 

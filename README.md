@@ -1,2 +1,2 @@
-# 3Dgame_project-Unity
-Some basic fps undergoing project
+# 3Dgame_proj_Unity
+Some basic fps movement etc... not finished yet
